@@ -1,10 +1,10 @@
 ## Olá, eu sou o Reyddner 👷‍♂️💻
 
-Engenheiro civil na [Mont Cruz Engenharia](https://www.montcruz.com.br/). Escrevo software para
+Engenheiro civil e desenvolvedor Full Stack na [Mont Cruz Engenharia](https://www.montcruz.com.br/), em Goiânia. Escrevo software para
 resolver o trabalho de engenharia que eu faço todo dia: fundações, estruturas metálicas,
 orçamento de obra e memoriais.
 
-*Civil engineer who builds software for structural and construction work.*
+*Civil engineer and full stack developer building software for structural and construction work.*
 
 ### Projetos abertos
 
