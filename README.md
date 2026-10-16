@@ -22,7 +22,7 @@ orçamento de obra e memoriais.
 
 ### Ferramentas
 
-TypeScript · React · Next.js · Python · C# · Supabase · Vercel · AutoCAD/DXF · QGIS
+TypeScript · React · Next.js · Python · C# · Supabase · Vercel · CAD/DXF · QGIS
 
 ### Contato
 
