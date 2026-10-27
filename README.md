@@ -1,31 +1,29 @@
-## Olá, eu sou o Reyddner 👷‍♂️💻
+## Hi, I'm Reyddner 👷‍♂️💻
 
-Engenheiro civil e desenvolvedor Full Stack na [Mont Cruz Engenharia](https://www.montcruz.com.br/), em Goiânia. Escrevo software para
-resolver o trabalho de engenharia que eu faço todo dia: fundações, estruturas metálicas,
-orçamento de obra e memoriais.
+Civil engineer and Full Stack developer at [Mont Cruz Engenharia](https://www.montcruz.com.br/), in Goiânia, Brazil. I write software
+to handle the engineering work I do every day: foundations, steel structures,
+construction cost estimating and technical reports.
 
-*Civil engineer and full stack developer building software for structural and construction work.*
+### Open projects
 
-### Projetos abertos
-
-| Projeto | O que faz |
+| Project | What it does |
 |---|---|
-| [**STARKX**](https://github.com/reyddner/starkx) · [abrir no navegador](https://starkx-publico.vercel.app) | Projeto de fundações no navegador: capacidade de estacas pelo SPT (Aoki-Velloso, Décourt-Quaresma), blocos, sapatas, tubulões e radier, com pranchas e memorial de cálculo. |
-| [**lean-agents-md**](https://github.com/reyddner/lean-agents-md) | Arquivo de instruções (AGENTS.md / CLAUDE.md) que faz Codex e Claude Code gastarem menos tokens. |
+| [**STARKX**](https://github.com/reyddner/starkx) · [open in the browser](https://starkx-publico.vercel.app) | Foundation design in the browser: pile capacity from SPT (Aoki-Velloso, Décourt-Quaresma), pile caps, spread footings, caissons and mat foundations, with drawings and calculation reports. |
+| [**lean-agents-md**](https://github.com/reyddner/lean-agents-md) | An instructions file (AGENTS.md / CLAUDE.md) that makes Codex and Claude Code spend fewer tokens. |
 
-### No que eu trabalho
+### What I work on
 
-- Dimensionamento de fundações e estruturas metálicas (galpões), com geração de pranchas DXF/PDF
-- Orçamento e gestão de obras: orçamento hierárquico, diário de obra, medições, CUB (NBR 12721)
-- Memoriais descritivos e de cálculo gerados automaticamente
-- Ferramentas de IA para o dia a dia de engenharia
+- Design of foundations and steel structures (warehouses), with DXF/PDF drawing generation
+- Construction cost estimating and project management: hierarchical estimates, daily site logs, progress measurements, CUB (Brazilian unit construction cost, NBR 12721)
+- Automatically generated specifications and calculation reports
+- AI tools for everyday engineering work
 
-### Ferramentas
+### Tools
 
 TypeScript · React · Next.js · Python · C# · Supabase · Vercel · CAD/DXF · QGIS
 
-### Contato
+### Contact
 
 🌐 [montcruz.com.br](https://www.montcruz.com.br/) ·
 📷 [@montcruzeng](https://www.instagram.com/montcruzeng/) (Mont Cruz Engenharia) ·
-📷 [@rey_andrei.01](https://www.instagram.com/rey_andrei.01/) (pessoal)
+📷 [@rey_andrei.01](https://www.instagram.com/rey_andrei.01/) (personal)
