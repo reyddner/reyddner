@@ -22,7 +22,6 @@ Most of what I build lives in private repositories. A selection:
 - **OBRAX**: quantity takeoff engines for concrete, masonry, mortar, paint and flooring
 - **CUBion**: CUB calculator (NBR 12721)
 - **SnapEng**: automatic engineering specifications (civil, electrical, structural, infrastructure)
-- **ELETROVERSE-3000**: 3D warehouse planner with integrated electrical calculations
 - **VORTHYS**: automated engineering and architecture projects from a floor plan
 - **TERRAX**: geoprocessing and land engineering platform built on QGIS workflows
 - Steel structure calculator, physical-financial schedule dashboard and Mont Cruz project hub with 3D viewer
