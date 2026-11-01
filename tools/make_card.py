@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PHOTO = ROOT / "_fonte" / "busto_sem_fundo.png"  # fica fora do git (.gitignore)
 LOGIN = "reyddner"
 START = dt.date(2011, 7, 1)  # primeiro emprego no setor (Engefort)
+CROP = (70, 25, 360, 345)  # em pixels de busto_sem_fundo.png
 COLS = 46
 RAMP = " .:-=+*#%@"
 WIDTH = 54  # largura da coluna de dados, em caracteres
@@ -102,7 +103,7 @@ def uptime(today):
 
 def ascii_art():
     im = Image.open(PHOTO).convert("RGBA")
-    im = im.crop(im.getchannel("A").getbbox())
+    im = im.crop(CROP)  # cabeça e começo dos ombros, para o rosto ocupar o desenho
     rows = round(COLS * im.height / im.width * 0.5)
     small = im.resize((COLS, rows), Image.LANCZOS)
     # recorte oval: os ombros vão sumindo nas laterais, como no modelo
@@ -170,7 +171,8 @@ def svg(art, info, t):
     parts.append(f'</text><text x="460" y="{info_top}">')
     parts += [f'<tspan x="460" dy="{lh if i else 0}">{l}</tspan>' for i, l in enumerate(info)]
     parts.append("</text></svg>")
-    return "\n".join(parts)
+    # sem quebras de linha: o Firefox desenha cada "\n" dentro de <text> como linha extra
+    return "".join(parts)
 
 
 if __name__ == "__main__":
