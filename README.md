@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg">
+  <img alt="Reyddner's GitHub profile card" src="light_mode.svg">
+</picture>
+
 ## Hi, I'm Reyddner 👷‍♂️💻
 
 Civil engineer and Full Stack developer at [Mont Cruz Engenharia](https://www.montcruz.com.br/), in Goiânia, Brazil. I write software
