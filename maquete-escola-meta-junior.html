@@ -1,0 +1,1072 @@
+<title>Maquete Escola Meta Júnior</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+:root {
+  --bg: #FAFBFC;
+  --bg2: #F0F4F8;
+  --bg-card: #FFFFFF;
+  --fg: #111827;
+  --fg2: #4B5563;
+  --fg3: #9CA3AF;
+  --accent: #1E40AF;
+  --accent-lt: #DBEAFE;
+  --accent-mid: #3B82F6;
+  --ok: #047857;
+  --ok-lt: #D1FAE5;
+  --ok-mid: #10B981;
+  --warn: #B45309;
+  --warn-lt: #FEF3C7;
+  --warn-mid: #F59E0B;
+  --school: #1D4ED8;
+  --school-lt: #EFF6FF;
+  --border: #E5E7EB;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+  --radius: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F172A; --bg2: #1E293B; --bg-card: #1E293B;
+    --fg: #F1F5F9; --fg2: #94A3B8; --fg3: #64748B;
+    --accent: #3B82F6; --accent-lt: #1E3A5F;
+    --ok: #10B981; --ok-lt: #064E3B;
+    --warn: #F59E0B; --warn-lt: #451A03;
+    --school: #60A5FA; --school-lt: #172554;
+    --border: #334155; --shadow: 0 1px 3px rgba(0,0,0,.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F172A; --bg2: #1E293B; --bg-card: #1E293B;
+  --fg: #F1F5F9; --fg2: #94A3B8; --fg3: #64748B;
+  --accent: #3B82F6; --accent-lt: #1E3A5F;
+  --ok: #10B981; --ok-lt: #064E3B;
+  --warn: #F59E0B; --warn-lt: #451A03;
+  --school: #60A5FA; --school-lt: #172554;
+  --border: #334155; --shadow: 0 1px 3px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg);
+  background: var(--bg);
+  padding-left: max(16px, env(safe-area-inset-left,0px));
+  padding-right: max(16px, env(safe-area-inset-right,0px));
+  padding-block: 0 32px;
+}
+
+/* Header */
+.header {
+  background: var(--accent);
+  margin-left: max(-16px, calc(-1*env(safe-area-inset-left,0px)));
+  margin-right: max(-16px, calc(-1*env(safe-area-inset-right,0px)));
+  padding: 20px max(24px, env(safe-area-inset-left,0px)) 20px max(24px, env(safe-area-inset-left,0px));
+  margin-bottom: 24px;
+}
+.header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-wrap: balance;
+}
+.header .meta { font-size: 12px; color: rgba(255,255,255,.75); margin-top: 4px; }
+
+/* Tab nav */
+.tabs-nav {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 2px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg2);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .15s, border-color .15s;
+}
+.tab-btn:hover { color: var(--accent); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+/* Tab content */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+.card-subtitle {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--fg3);
+  margin-bottom: 8px;
+}
+
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.info-item { }
+.info-label { font-size: 11px; color: var(--fg3); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+.info-value { font-size: 14px; color: var(--fg); font-weight: 500; margin-top: 2px; }
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-ok { background: var(--ok-lt); color: var(--ok); }
+.badge-warn { background: var(--warn-lt); color: var(--warn); }
+.badge-info { background: var(--accent-lt); color: var(--accent); }
+
+/* Survey rows */
+.survey-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.survey-row:last-child { border-bottom: none; }
+.survey-label { flex: 1; font-weight: 500; }
+.survey-value { flex: 2; color: var(--fg2); font-size: 13px; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: var(--bg2); padding: 8px 10px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--fg3); border-bottom: 2px solid var(--border); }
+td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+.tbl-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+
+/* SVG container */
+.svg-wrap { overflow-x: auto; border-radius: var(--radius); background: var(--bg-card); border: 1px solid var(--border); padding: 12px; }
+.canvas-wrap { overflow-x: auto; border-radius: var(--radius); background: var(--bg2); border: 1px solid var(--border); padding: 12px; text-align: center; }
+
+/* Steps */
+.step { display: flex; gap: 14px; margin-bottom: 20px; }
+.step-num {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.step-body h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.step-body p { font-size: 13px; color: var(--fg2); }
+.step-body ul { font-size: 13px; color: var(--fg2); padding-left: 18px; margin-top: 4px; }
+.step-body ul li { margin-bottom: 2px; }
+
+/* Piece diagram */
+.piece-diagram {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+.piece-box {
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  padding: 8px 12px;
+  min-width: 100px;
+  text-align: center;
+  background: var(--accent-lt);
+}
+.piece-box .dim { font-size: 13px; font-weight: 700; color: var(--accent); font-family: 'Space Grotesk', sans-serif; }
+.piece-box .lbl { font-size: 11px; color: var(--fg2); margin-top: 2px; }
+
+/* Legend */
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.legend-color { width: 14px; height: 14px; border-radius: 2px; border: 1px solid rgba(0,0,0,.1); }
+
+/* Alert box */
+.alert {
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+.alert-warn { background: var(--warn-lt); border-left: 3px solid var(--warn-mid); color: var(--warn); }
+.alert-ok { background: var(--ok-lt); border-left: 3px solid var(--ok-mid); color: var(--ok); }
+.alert-info { background: var(--accent-lt); border-left: 3px solid var(--accent-mid); color: var(--accent); }
+
+/* Child section */
+.child-step { background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border); padding: 16px; margin-bottom: 12px; }
+.child-step h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.child-step p { font-size: 14px; color: var(--fg); line-height: 1.7; }
+.emoji-big { font-size: 24px; display: block; margin-bottom: 6px; }
+
+/* Two-col layout */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+h2.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 12px;
+  margin-top: 4px;
+}
+
+/* Scale ruler visual */
+.ruler { display: flex; align-items: center; gap: 0; margin: 8px 0; }
+.ruler-seg { height: 10px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #fff; font-weight: 700; }
+</style>
+
+<div class="header">
+  <h1>Maquete Escola Meta Júnior — Projeto Executivo</h1>
+  <div class="meta">Av. Vasco dos Reis 401 · Jardim Vila Boa · Goiânia GO · Escala 1:200 · Base 80×60 cm · Entrega 27/11/2026</div>
+</div>
+
+<nav class="tabs-nav" role="tablist">
+  <button class="tab-btn active" data-tab="projeto" role="tab">Projeto</button>
+  <button class="tab-btn" data-tab="levantamento" role="tab">Levantamento</button>
+  <button class="tab-btn" data-tab="planta" role="tab">Planta</button>
+  <button class="tab-btn" data-tab="iso3d" role="tab">3D</button>
+  <button class="tab-btn" data-tab="pecas" role="tab">Peças</button>
+  <button class="tab-btn" data-tab="montagem" role="tab">Montagem</button>
+  <button class="tab-btn" data-tab="materiais" role="tab">Materiais</button>
+  <button class="tab-btn" data-tab="crianca" role="tab">Para a Criança</button>
+</nav>
+
+<!-- TAB 1: PROJETO -->
+<div id="tab-projeto" class="tab-panel active">
+  <div class="alert alert-info">Projeto elaborado como maquete física real da rua da escola. Escala 1:200 consistente em todo o modelo.</div>
+
+  <h2 class="section-title">Dados da Atividade</h2>
+  <div class="card">
+    <div class="info-grid">
+      <div class="info-item"><div class="info-label">Escola</div><div class="info-value">Escola Meta</div></div>
+      <div class="info-item"><div class="info-label">Professora</div><div class="info-value">Ana Terra</div></div>
+      <div class="info-item"><div class="info-label">Turma</div><div class="info-value">2º Ano</div></div>
+      <div class="info-item"><div class="info-label">Entrega</div><div class="info-value">27/11/2026</div></div>
+      <div class="info-item"><div class="info-label">Pontuação</div><div class="info-value">2,0 pontos</div></div>
+      <div class="info-item"><div class="info-label">Tema</div><div class="info-value">Rua da escola</div></div>
+    </div>
+    <div class="card-subtitle">Critérios de Avaliação</div>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span class="badge badge-info">Criatividade</span>
+      <span class="badge badge-info">Organização</span>
+      <span class="badge badge-info">Participação da criança</span>
+      <span class="badge badge-info">Apresentação oral</span>
+    </div>
+  </div>
+
+  <h2 class="section-title">Escola representada</h2>
+  <div class="card">
+    <div class="info-grid">
+      <div class="info-item"><div class="info-label">Nome</div><div class="info-value">Escola Meta Júnior</div></div>
+      <div class="info-item"><div class="info-label">Endereço</div><div class="info-value">Av. Vasco dos Reis, 401</div></div>
+      <div class="info-item"><div class="info-label">Bairro</div><div class="info-value">Jardim Vila Boa</div></div>
+      <div class="info-item"><div class="info-label">CEP</div><div class="info-value">74360-460</div></div>
+      <div class="info-item"><div class="info-label">Cidade</div><div class="info-value">Goiânia – GO</div></div>
+      <div class="info-item"><div class="info-label">Nível</div><div class="info-value">Ed. Infantil / Fund. I</div></div>
+    </div>
+    <div class="alert alert-warn" style="margin-top:8px; margin-bottom:0;">
+      <strong>⚠ Verificação in loco necessária:</strong> Não existem fotos da fachada disponíveis online. Fotografar a escola e as construções vizinhas antes de iniciar a construção da maquete.
+    </div>
+  </div>
+
+  <h2 class="section-title">Parâmetros técnicos</h2>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Escala e Base</div>
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">Escala</div><div class="info-value">1:200</div></div>
+        <div class="info-item"><div class="info-label">1 cm modelo</div><div class="info-value">= 2 m real</div></div>
+        <div class="info-item"><div class="info-label">Base (MDF)</div><div class="info-value">80 × 60 cm</div></div>
+        <div class="info-item"><div class="info-label">Área real</div><div class="info-value">160 × 120 m</div></div>
+      </div>
+      <div style="margin-top:12px;">
+        <div class="card-subtitle">Régua de escala</div>
+        <div class="ruler">
+          <div class="ruler-seg" style="width:30px; background:#1E40AF;">5cm</div>
+          <div class="ruler-seg" style="width:30px; background:#3B82F6;">5cm</div>
+          <div class="ruler-seg" style="width:30px; background:#1E40AF;">5cm</div>
+          <div class="ruler-seg" style="width:30px; background:#3B82F6;">5cm</div>
+        </div>
+        <div style="font-size:11px; color:var(--fg3); margin-top:2px;">Cada segmento = 10 m real</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Referências de dimensão</div>
+      <table>
+        <tr><th>Elemento</th><th>Real</th><th>Modelo</th></tr>
+        <tr><td>Fachada escola</td><td>~30 m</td><td>15 cm</td></tr>
+        <tr><td>Largura avenida</td><td>~12 m</td><td>6 cm</td></tr>
+        <tr><td>Lote típico</td><td>10×25 m</td><td>5×12,5 cm</td></tr>
+        <tr><td>Altura casa</td><td>~6 m</td><td>3 cm</td></tr>
+        <tr><td>Altura escola</td><td>~8 m</td><td>4 cm</td></tr>
+        <tr><td>Calçada</td><td>~3 m</td><td>1,5 cm</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="section-title">Trecho representado</h2>
+  <div class="card">
+    <p style="font-size:13px; color:var(--fg2); margin-bottom:12px;">
+      A maquete representa um trecho de aproximadamente 160 m da Av. Vasco dos Reis, centrado na fachada da escola. O eixo da avenida corre horizontalmente no modelo, a ~26 cm do topo da base. A escola ocupa o centro do bloco norte.
+    </p>
+    <div class="info-grid">
+      <div class="info-item"><div class="info-label">Bloco norte (escola)</div><div class="info-value">3 lotes à esq. + escola + 3 lotes à dir.</div></div>
+      <div class="info-item"><div class="info-label">Bloco sul (oposto)</div><div class="info-value">7–8 lotes residenciais</div></div>
+      <div class="info-item"><div class="info-label">Vegetação</div><div class="info-value">Árvores calçada + escola</div></div>
+      <div class="info-item"><div class="info-label">Mobiliário urbano</div><div class="info-value">Postes, placas, faixa</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: LEVANTAMENTO -->
+<div id="tab-levantamento" class="tab-panel">
+  <div class="alert alert-warn"><strong>Levantamento parcial.</strong> Dados confirmados via fontes digitais estão marcados ✔. Itens com ⚠ precisam de verificação fotográfica presencial antes da construção.</div>
+
+  <div class="card">
+    <div class="card-title">Dados da escola <span class="badge badge-ok">✔ Confirmado</span></div>
+    <div class="survey-row"><div class="survey-label">Nome</div><div class="survey-value">Escola Meta Júnior</div></div>
+    <div class="survey-row"><div class="survey-label">Endereço</div><div class="survey-value">Av. Vasco dos Reis, 401 — Jardim Vila Boa, Goiânia GO</div></div>
+    <div class="survey-row"><div class="survey-label">CEP</div><div class="survey-value">74360-460</div></div>
+    <div class="survey-row"><div class="survey-label">Situação</div><div class="survey-value">Ativa no Censo Escolar (MEC)</div></div>
+    <div class="survey-row"><div class="survey-label">Nível</div><div class="survey-value">Educação Infantil + Ensino Fundamental I</div></div>
+    <div class="survey-row"><div class="survey-label">Gestão</div><div class="survey-value">Privada</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Bairro Jardim Vila Boa <span class="badge badge-ok">✔ Confirmado</span></div>
+    <div class="survey-row"><div class="survey-label">Fundação</div><div class="survey-value">1969</div></div>
+    <div class="survey-row"><div class="survey-label">Tipologia dominante</div><div class="survey-value">Residencial médio-alto, construção em alvenaria</div></div>
+    <div class="survey-row"><div class="survey-label">Lote típico</div><div class="survey-value">10 m de frente × 25 m de profundidade</div></div>
+    <div class="survey-row"><div class="survey-label">Construção típica</div><div class="survey-value">Sobrado 2 pavimentos ou casa térrea, cobertura em telha cerâmica</div></div>
+    <div class="survey-row"><div class="survey-label">Passeio típico</div><div class="survey-value">~3 m de largura, piso em cimento</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Av. Vasco dos Reis <span class="badge badge-ok">✔ Confirmado (parcial)</span></div>
+    <div class="survey-row"><div class="survey-label">Tipo</div><div class="survey-value">Via arterial residencial</div></div>
+    <div class="survey-row"><div class="survey-label">Largura estimada</div><div class="survey-value">~12 m de pista (2 faixas) <span class="badge badge-warn">⚠ verificar</span></div></div>
+    <div class="survey-row"><div class="survey-label">Sentido</div><div class="survey-value">Duplo <span class="badge badge-warn">⚠ verificar</span></div></div>
+    <div class="survey-row"><div class="survey-label">Vegetação viária</div><div class="survey-value">Árvores no passeio (típico do bairro) <span class="badge badge-warn">⚠ verificar</span></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Fachada da escola <span class="badge badge-warn">⚠ Verificação obrigatória</span></div>
+    <div class="alert alert-warn" style="margin-bottom:12px;">Nenhuma foto da fachada foi encontrada em fontes digitais (Google Street View, redes sociais, site da escola). Este é o item mais crítico a levantar presencialmente.</div>
+    <div class="survey-row"><div class="survey-label">Cor da fachada</div><div class="survey-value"><span class="badge badge-warn">⚠ Fotografar</span></div></div>
+    <div class="survey-row"><div class="survey-label">Portão / entrada</div><div class="survey-value"><span class="badge badge-warn">⚠ Fotografar</span></div></div>
+    <div class="survey-row"><div class="survey-label">Recuo frontal</div><div class="survey-value"><span class="badge badge-warn">⚠ Medir ou estimar</span></div></div>
+    <div class="survey-row"><div class="survey-label">Número de pavimentos</div><div class="survey-value">Estima-se 1–2 pavimentos <span class="badge badge-warn">⚠ verificar</span></div></div>
+    <div class="survey-row"><div class="survey-label">Letreiro / logo</div><div class="survey-value"><span class="badge badge-warn">⚠ Fotografar para impressão</span></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Checklist de visita</div>
+    <div class="survey-row"><div class="survey-label">📸</div><div class="survey-value">Fotografar fachada principal da escola (frente e ângulo)</div></div>
+    <div class="survey-row"><div class="survey-label">📸</div><div class="survey-value">Fotografar as 3–4 casas/edifícios à esquerda da escola</div></div>
+    <div class="survey-row"><div class="survey-label">📸</div><div class="survey-value">Fotografar as 3–4 casas/edifícios à direita da escola</div></div>
+    <div class="survey-row"><div class="survey-label">📸</div><div class="survey-value">Fotografar o lado oposto da avenida (bloco sul)</div></div>
+    <div class="survey-row"><div class="survey-label">📸</div><div class="survey-value">Fotografar o passeio e a rua (piso, árvores, postes)</div></div>
+    <div class="survey-row"><div class="survey-label">📐</div><div class="survey-value">Estimar a largura da avenida (quantas faixas, largura visual)</div></div>
+    <div class="survey-row"><div class="survey-label">📋</div><div class="survey-value">Anotar cores dominantes de cada fachada</div></div>
+  </div>
+</div>
+
+<!-- TAB 3: PLANTA -->
+<div id="tab-planta" class="tab-panel">
+  <h2 class="section-title">Planta de Implantação — 1:200</h2>
+  <p style="font-size:13px; color:var(--fg2); margin-bottom:12px;">Vista superior da maquete. Cada centímetro no desenho = 2 m real. Base 80×60 cm.</p>
+
+  <div class="svg-wrap">
+    <svg id="planta-svg" viewBox="0 0 590 410" width="100%" style="max-width:590px; display:block; margin:auto; font-family:'Inter',sans-serif;">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#CBD5E1" stroke-width="1"/>
+        </pattern>
+      </defs>
+
+      <!-- Base MDF -->
+      <rect x="50" y="10" width="480" height="360" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5"/>
+
+      <!-- Área vegetação / fundo verde claro -->
+      <rect x="50" y="10" width="480" height="130" fill="#F0FDF4" stroke="none"/>
+      <rect x="50" y="192" width="480" height="178" fill="#F0FDF4" stroke="none"/>
+
+      <!-- Rua: y=148-184 -->
+      <rect x="50" y="148" width="480" height="36" fill="#D1D5DB" stroke="none"/>
+      <!-- Faixas de rolamento -->
+      <line x1="50" y1="166" x2="530" y2="166" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="12,8"/>
+      <!-- Nome da rua -->
+      <text x="290" y="161" text-anchor="middle" font-size="9" fill="#6B7280" font-weight="600">AV. VASCO DOS REIS</text>
+
+      <!-- Calçada norte y=140-148 -->
+      <rect x="50" y="140" width="480" height="8" fill="#E5E7EB" stroke="none"/>
+      <!-- Calçada sul y=184-192 -->
+      <rect x="50" y="184" width="480" height="8" fill="#E5E7EB" stroke="none"/>
+
+      <!-- Faixa de pedestre -->
+      <rect x="270" y="148" width="6" height="36" fill="#fff" opacity=".7"/>
+      <rect x="278" y="148" width="6" height="36" fill="#fff" opacity=".7"/>
+      <rect x="286" y="148" width="6" height="36" fill="#fff" opacity=".7"/>
+
+      <!-- LOTES NORTE (escola) y=58-140 -->
+      <!-- L3 -->
+      <rect x="65" y="58" width="60" height="82" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,2"/>
+      <rect x="69" y="66" width="52" height="58" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <text x="95" y="96" text-anchor="middle" font-size="8" fill="#475569">Casa</text>
+      <text x="95" y="106" text-anchor="middle" font-size="7" fill="#94A3B8">L3</text>
+
+      <!-- L2 -->
+      <rect x="125" y="58" width="60" height="82" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,2"/>
+      <rect x="129" y="66" width="52" height="58" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <text x="155" y="96" text-anchor="middle" font-size="8" fill="#475569">Casa</text>
+      <text x="155" y="106" text-anchor="middle" font-size="7" fill="#94A3B8">L2</text>
+
+      <!-- L1 -->
+      <rect x="185" y="58" width="60" height="82" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,2"/>
+      <rect x="189" y="66" width="52" height="58" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <text x="215" y="96" text-anchor="middle" font-size="8" fill="#475569">Casa</text>
+      <text x="215" y="106" text-anchor="middle" font-size="7" fill="#94A3B8">L1</text>
+
+      <!-- ESCOLA (lote) -->
+      <rect x="245" y="45" width="90" height="95" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <!-- Escola (edifício) -->
+      <rect x="250" y="52" width="80" height="72" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="2" rx="2"/>
+      <!-- Entrada escola -->
+      <rect x="281" y="122" width="18" height="6" fill="#1D4ED8" rx="1"/>
+      <text x="290" y="84" text-anchor="middle" font-size="9" fill="#1E40AF" font-weight="700">ESCOLA</text>
+      <text x="290" y="96" text-anchor="middle" font-size="8" fill="#3B82F6">META</text>
+      <text x="290" y="107" text-anchor="middle" font-size="7" fill="#93C5FD">JÚNIOR</text>
+
+      <!-- R1 -->
+      <rect x="335" y="58" width="60" height="82" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,2"/>
+      <rect x="339" y="66" width="52" height="58" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <text x="365" y="96" text-anchor="middle" font-size="8" fill="#475569">Casa</text>
+      <text x="365" y="106" text-anchor="middle" font-size="7" fill="#94A3B8">R1</text>
+
+      <!-- R2 -->
+      <rect x="395" y="58" width="60" height="82" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,2"/>
+      <rect x="399" y="66" width="52" height="58" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <text x="425" y="96" text-anchor="middle" font-size="8" fill="#475569">Casa</text>
+      <text x="425" y="106" text-anchor="middle" font-size="7" fill="#94A3B8">R2</text>
+
+      <!-- R3 -->
+      <rect x="455" y="58" width="60" height="82" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,2"/>
+      <rect x="459" y="66" width="52" height="58" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <text x="485" y="96" text-anchor="middle" font-size="8" fill="#475569">Casa</text>
+      <text x="485" y="106" text-anchor="middle" font-size="7" fill="#94A3B8">R3</text>
+
+      <!-- LOTES SUL y=192-268 -->
+      <rect x="65" y="192"  width="60" height="76" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+      <rect x="70" y="198" width="50" height="60" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <rect x="125" y="192" width="60" height="76" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+      <rect x="130" y="198" width="50" height="60" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <rect x="185" y="192" width="60" height="76" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+      <rect x="190" y="198" width="50" height="60" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <rect x="245" y="192" width="60" height="76" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+      <rect x="250" y="198" width="50" height="60" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <rect x="305" y="192" width="60" height="76" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+      <rect x="310" y="198" width="50" height="60" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <rect x="365" y="192" width="60" height="76" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+      <rect x="370" y="198" width="50" height="60" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+      <rect x="425" y="192" width="60" height="76" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+      <rect x="430" y="198" width="50" height="60" fill="#E2E8F0" stroke="#64748B" stroke-width="1" rx="1"/>
+
+      <!-- Árvores -->
+      <circle cx="80" cy="148" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="140" cy="148" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="200" cy="148" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="350" cy="148" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="410" cy="148" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="470" cy="148" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="80" cy="192" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="140" cy="192" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="350" cy="192" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+      <circle cx="470" cy="192" r="5" fill="#86EFAC" stroke="#16A34A" stroke-width="1"/>
+
+      <!-- Postes -->
+      <line x1="100" y1="140" x2="100" y2="150" stroke="#6B7280" stroke-width="2"/>
+      <circle cx="100" cy="140" r="2" fill="#FCD34D"/>
+      <line x1="380" y1="140" x2="380" y2="150" stroke="#6B7280" stroke-width="2"/>
+      <circle cx="380" cy="140" r="2" fill="#FCD34D"/>
+
+      <!-- Cotas -->
+      <!-- Largura base -->
+      <line x1="50" y1="378" x2="530" y2="378" stroke="#6B7280" stroke-width="1"/>
+      <line x1="50" y1="374" x2="50" y2="382" stroke="#6B7280" stroke-width="1"/>
+      <line x1="530" y1="374" x2="530" y2="382" stroke="#6B7280" stroke-width="1"/>
+      <text x="290" y="392" text-anchor="middle" font-size="9" fill="#6B7280">80 cm (160 m real)</text>
+      <!-- Altura base -->
+      <line x1="540" y1="10" x2="540" y2="370" stroke="#6B7280" stroke-width="1"/>
+      <line x1="536" y1="10" x2="544" y2="10" stroke="#6B7280" stroke-width="1"/>
+      <line x1="536" y1="370" x2="544" y2="370" stroke="#6B7280" stroke-width="1"/>
+      <text x="558" y="195" text-anchor="middle" font-size="9" fill="#6B7280" transform="rotate(90,558,195)">60 cm (120 m)</text>
+      <!-- Cota rua -->
+      <line x1="30" y1="148" x2="50" y2="148" stroke="#6B7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="30" y1="184" x2="50" y2="184" stroke="#6B7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="34" y1="148" x2="34" y2="184" stroke="#6B7280" stroke-width="1"/>
+      <line x1="30" y1="148" x2="38" y2="148" stroke="#6B7280" stroke-width="1"/>
+      <line x1="30" y1="184" x2="38" y2="184" stroke="#6B7280" stroke-width="1"/>
+      <text x="22" y="166" text-anchor="middle" font-size="8" fill="#6B7280" transform="rotate(-90,22,166)">6 cm</text>
+
+      <!-- Borda -->
+      <rect x="50" y="10" width="480" height="360" fill="none" stroke="#374151" stroke-width="1.5"/>
+
+      <!-- Título da prancha -->
+      <text x="55" y="406" font-size="8" fill="#94A3B8">PLANTA DE IMPLANTAÇÃO — ESC. 1:200 — BASE 80×60cm</text>
+    </svg>
+  </div>
+
+  <div class="legend" style="margin-top:12px; margin-bottom:4px;">
+    <div class="legend-item"><div class="legend-color" style="background:#BFDBFE; border-color:#1D4ED8;"></div>Escola</div>
+    <div class="legend-item"><div class="legend-color" style="background:#E2E8F0;"></div>Residências</div>
+    <div class="legend-item"><div class="legend-color" style="background:#D1D5DB;"></div>Rua</div>
+    <div class="legend-item"><div class="legend-color" style="background:#E5E7EB;"></div>Calçada</div>
+    <div class="legend-item"><div class="legend-color" style="background:#86EFAC;"></div>Árvore</div>
+    <div class="legend-item"><div class="legend-color" style="background:#FCD34D;"></div>Poste</div>
+  </div>
+</div>
+
+<!-- TAB 4: 3D ISOMÉTRICO -->
+<div id="tab-iso3d" class="tab-panel">
+  <h2 class="section-title">Perspectiva 3D Isométrica</h2>
+  <p style="font-size:13px; color:var(--fg2); margin-bottom:12px;">Vista axonométrica (isométrica) da maquete finalizada. Ponto de vista: sudoeste. Clique em "Redesenhar" para atualizar.</p>
+  <div class="canvas-wrap">
+    <canvas id="iso-canvas" width="580" height="380" style="max-width:100%; border-radius:4px;"></canvas>
+  </div>
+  <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;">
+    <button onclick="drawIso()" style="padding:6px 14px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius); font-size:13px; cursor:pointer;">Redesenhar</button>
+  </div>
+  <div class="legend" style="margin-top:12px;">
+    <div class="legend-item"><div class="legend-color" style="background:#93C5FD;"></div>Escola</div>
+    <div class="legend-item"><div class="legend-color" style="background:#D1D5DB;"></div>Casas</div>
+    <div class="legend-item"><div class="legend-color" style="background:#9CA3AF;"></div>Rua</div>
+    <div class="legend-item"><div class="legend-color" style="background:#D1FAE5;"></div>Calçada</div>
+    <div class="legend-item"><div class="legend-color" style="background:#34D399;"></div>Árvores</div>
+  </div>
+</div>
+
+<!-- TAB 5: PEÇAS E CORTES -->
+<div id="tab-pecas" class="tab-panel">
+  <h2 class="section-title">Desenho de Peças para Corte</h2>
+  <div class="alert alert-info">Todas as medidas em <strong>milímetros</strong>. Papel pluma 5mm para paredes, 3mm para detalhes e fachadas. As dimensões abaixo são as medidas de corte (já no tamanho da maquete, escala 1:200).</div>
+
+  <div class="card">
+    <div class="card-title">① Escola Meta Júnior — papel pluma 5mm</div>
+    <div class="piece-diagram">
+      <div class="piece-box"><div class="dim">150 × 40 mm</div><div class="lbl">Parede frontal</div></div>
+      <div class="piece-box"><div class="dim">150 × 40 mm</div><div class="lbl">Parede posterior</div></div>
+      <div class="piece-box"><div class="dim">100 × 40 mm</div><div class="lbl">Lateral esq.</div></div>
+      <div class="piece-box"><div class="dim">100 × 40 mm</div><div class="lbl">Lateral dir.</div></div>
+      <div class="piece-box"><div class="dim">160 × 110 mm</div><div class="lbl">Cobertura plana</div></div>
+    </div>
+    <p style="font-size:12px; color:var(--fg3); margin-top:10px;">* Fachada frontal: aplicar recorte de impressão (letreiro + janelas) sobre a parede frontal com papel 3mm ou acetato.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">② Casa típica (×6) — papel pluma 5mm</div>
+    <div class="piece-diagram">
+      <div class="piece-box"><div class="dim">50 × 30 mm</div><div class="lbl">Fachada (×6)</div></div>
+      <div class="piece-box"><div class="dim">50 × 30 mm</div><div class="lbl">Muro posterior (×6)</div></div>
+      <div class="piece-box"><div class="dim">60 × 30 mm</div><div class="lbl">Lateral esq. (×6)</div></div>
+      <div class="piece-box"><div class="dim">60 × 30 mm</div><div class="lbl">Lateral dir. (×6)</div></div>
+      <div class="piece-box"><div class="dim">60 × 60 mm</div><div class="lbl">Cobertura (×6)</div></div>
+    </div>
+    <p style="font-size:12px; color:var(--fg3); margin-top:10px;">Casa simples, lote de 5cm de frente. Ajuste a cor de cada casa conforme verificação in loco.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">③ Calçadas e pavimentação — EPS 30mm (base nivelamento)</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Peça</th><th>Largura</th><th>Comprimento</th><th>Material</th></tr>
+        <tr><td>Calçada norte (escola)</td><td>15 mm</td><td>480 mm</td><td>Papel cartão + tinta cinza</td></tr>
+        <tr><td>Calçada sul</td><td>15 mm</td><td>480 mm</td><td>Papel cartão + tinta cinza</td></tr>
+        <tr><td>Faixa de pedestre</td><td>35 mm</td><td>36 mm</td><td>Cartão branco/preto</td></tr>
+        <tr><td>Pista (rua)</td><td>60 mm</td><td>480 mm</td><td>Papel cartão + tinta cinza escuro</td></tr>
+        <tr><td>Jardins (bloco norte)</td><td>variável</td><td>variável</td><td>EPS pintado de verde + esponja</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">④ Mobiliário urbano — palitos e arame</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Elemento</th><th>Dimensão</th><th>Material</th><th>Qtd</th></tr>
+        <tr><td>Poste</td><td>Ø2mm × 40mm alt.</td><td>Palito de dente ou arame</td><td>4–6</td></tr>
+        <tr><td>Árvore (tronco)</td><td>Ø2mm × 25mm</td><td>Palito</td><td>8–10</td></tr>
+        <tr><td>Copa árvore</td><td>Ø20mm</td><td>Esponja verde</td><td>8–10</td></tr>
+        <tr><td>Placa de rua</td><td>5×8mm</td><td>Papel 3mm impresso</td><td>1–2</td></tr>
+        <tr><td>Semáforo</td><td>opcional</td><td>Palito + cartão</td><td>1</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⑤ Resumo de consumo de papel pluma</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Uso</th><th>Material</th><th>Área estimada</th></tr>
+        <tr><td>Escola (paredes + teto)</td><td>Papel pluma 5mm</td><td>~380 cm²</td></tr>
+        <tr><td>6 casas (paredes + teto)</td><td>Papel pluma 5mm</td><td>~650 cm²</td></tr>
+        <tr><td>Fachadas / detalhes</td><td>Papel pluma 3mm</td><td>~200 cm²</td></tr>
+        <tr><td>Janelas / recortes</td><td>Acetato transparente</td><td>~100 cm²</td></tr>
+        <tr><td><strong>Total 5mm</strong></td><td>Papel pluma A2 (62×44cm = 2728cm²)</td><td>~1030 cm² → <strong>1 folha A2</strong></td></tr>
+        <tr><td><strong>Total 3mm</strong></td><td>Papel pluma A3 (42×30cm = 1260cm²)</td><td>~200 cm² → <strong>1 folha A3</strong></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: MONTAGEM -->
+<div id="tab-montagem" class="tab-panel">
+  <h2 class="section-title">Plano de Montagem em Fases</h2>
+  <div class="alert alert-ok">Respeitar a ordem. Não avançar para a próxima fase sem que a cola da fase anterior esteja completamente seca.</div>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h4>Preparação da base (1–2 h)</h4>
+      <ul>
+        <li>Lixar levemente o MDF 80×60cm com lixa 120</li>
+        <li>Marcar a posição da avenida a lápis: linha a 23cm e 29cm da borda norte</li>
+        <li>Marcar as divisões dos lotes (linhas a lápis, espaçamento 10cm entre divisores de lote)</li>
+        <li>Colar a placa de EPS 30mm sobre o MDF com cola própria para isopor</li>
+        <li>Aguardar secar completamente (mínimo 2 h)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h4>Pavimentação e calçadas (1 h + secagem 2 h)</h4>
+      <ul>
+        <li>Recortar cartão ou papelão para rua (480×60mm) e pintar cinza escuro</li>
+        <li>Recortar calçadas (480×15mm cada lado) e pintar cinza claro</li>
+        <li>Recortar faixa de pedestre (35×36mm) em cartão branco e marcar listras pretas</li>
+        <li>Colar tudo na posição marcada com cola branca diluída (1:1 com água)</li>
+        <li>Passar uma camada de cola branca por cima para impermeabilizar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h4>Construção dos edifícios (2–3 h)</h4>
+      <ul>
+        <li>Usar régua metálica e estilete para cortar o papel pluma — NÃO usar tesoura (esmigalha)</li>
+        <li>Cortar todas as peças conforme tabela na aba "Peças"</li>
+        <li>Montar cada caixa com cola branca nas juntas; usar fita crepe para segurar até secar</li>
+        <li>Montar primeiro a escola, depois as 6 casas</li>
+        <li>Aguardar cada montagem secar antes de colar no terreno (mínimo 1h por edificação)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h4>Pintura das fachadas (1–2 h + secagem 2 h)</h4>
+      <ul>
+        <li>Pintar cada edificação com tinta acrílica fosca conforme fotografias levantadas</li>
+        <li>Escola: pintar conforme a cor real da fachada (levantar na visita)</li>
+        <li>Casas: variar as cores (branco, creme, amarelo, salmão — típico do bairro)</li>
+        <li>Rua: cinza escuro; calçada: cinza claro; jardins: verde</li>
+        <li>Aguardar secagem completa antes de colar as edificações na base</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <h4>Posicionamento das edificações (1 h)</h4>
+      <ul>
+        <li>Colar a escola centralizada na posição marcada (x≈32,5–47,5cm, recuo frontal 2cm da calçada)</li>
+        <li>Colar as 3 casas à esquerda (L3, L2, L1) e 3 à direita (R1, R2, R3) com espaçamento de 1mm entre lotes</li>
+        <li>Colar as casas do bloco sul (lado oposto da rua)</li>
+        <li>Usar cola branca ou cola quente na base</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">6</div>
+    <div class="step-body">
+      <h4>Fachadas impressas e detalhes (1 h)</h4>
+      <ul>
+        <li>Imprimir o letreiro "Escola Meta Júnior" em escala (comprimento ~140mm) e colar na fachada frontal</li>
+        <li>Recortar janelas em acetato transparente e colar nos recortes das paredes</li>
+        <li>Adicionar portões com cartão EVA ou papel pluma 3mm</li>
+        <li>Colar muros (tiras de papel pluma 3mm, 5–8mm de altura) nos limites dos lotes</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">7</div>
+    <div class="step-body">
+      <h4>Vegetação e mobiliário urbano (1–2 h)</h4>
+      <ul>
+        <li>Colar postes (palitos + esfera dourada ou miçanga amarela no topo) nas calçadas</li>
+        <li>Preparar árvores: cortar palito para tronco (25mm), colar esponja verde cortada em bola (Ø20mm)</li>
+        <li>Posicionar árvores uniformemente nas calçadas a cada ~5cm</li>
+        <li>Cobrir os jardins com areia colorida verde ou flock (esponja triturada) com cola branca diluída</li>
+        <li>Adicionar placa de rua (papel impresso sobre palito)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">8</div>
+    <div class="step-body">
+      <h4>Acabamento final e identificação (30 min)</h4>
+      <ul>
+        <li>Revisar toda a maquete: verificar bordas limpas, sem resíduo de cola</li>
+        <li>Tocar com tinta fosca nas regiões com marcas ou sujeira</li>
+        <li>Colar etiqueta de identificação discreta na borda inferior do MDF: "Escola Meta Júnior — Maquete — 2º Ano 2026"</li>
+        <li>Proteger para transporte: embalar com plástico bolha sobre uma caixa rígida</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 7: MATERIAIS E ORÇAMENTO -->
+<div id="tab-materiais" class="tab-panel">
+  <h2 class="section-title">Lista Completa de Materiais</h2>
+  <div class="tbl-wrap" style="margin-bottom:20px;">
+    <table>
+      <tr><th>#</th><th>Material</th><th>Especificação</th><th>Qtd</th><th>Uso</th></tr>
+      <tr><td>1</td><td>MDF</td><td>80×60cm, 6mm</td><td>1 chapa</td><td>Base da maquete</td></tr>
+      <tr><td>2</td><td>EPS (isopor)</td><td>100×60cm, 30mm, alta dens.</td><td>1 chapa</td><td>Nivelamento do terreno</td></tr>
+      <tr><td>3</td><td>Papel pluma 5mm</td><td>Formato A2 (62×44cm)</td><td>2 folhas</td><td>Paredes dos edifícios</td></tr>
+      <tr><td>4</td><td>Papel pluma 3mm</td><td>Formato A3 (42×30cm)</td><td>3 folhas</td><td>Detalhes, fachadas, muros</td></tr>
+      <tr><td>5</td><td>Papelão micro-ondulado</td><td>50×65cm</td><td>2 folhas</td><td>Calçada, rua, coberturas</td></tr>
+      <tr><td>6</td><td>EVA</td><td>40×60cm</td><td>4 folhas</td><td>Portões, muros, detalhes</td></tr>
+      <tr><td>7</td><td>Cartolina</td><td>A3, cores variadas</td><td>2 folhas</td><td>Complementos</td></tr>
+      <tr><td>8</td><td>Acetato transparente</td><td>A4</td><td>2 folhas</td><td>Janelas</td></tr>
+      <tr><td>9</td><td>Tinta acrílica fosca</td><td>Cores: cinza, bege, branco, verde, terracota</td><td>5 unid.</td><td>Pintura geral</td></tr>
+      <tr><td>10</td><td>Cola branca</td><td>500 g</td><td>2 unid.</td><td>Colagem geral</td></tr>
+      <tr><td>11</td><td>Cola EPS</td><td>Específica para isopor</td><td>1 unid.</td><td>EPS na base</td></tr>
+      <tr><td>12</td><td>Palito de dente</td><td>Caixa 100 un.</td><td>2 caixas</td><td>Postes, troncos, suportes</td></tr>
+      <tr><td>13</td><td>Arame galvanizado</td><td>Ø0,5–0,8mm, rolo</td><td>1 rolo</td><td>Postes altos, semáforo</td></tr>
+      <tr><td>14</td><td>Esponja de lavar louça</td><td>Verde (para copas)</td><td>4 unid.</td><td>Árvores</td></tr>
+      <tr><td>15</td><td>Impressão colorida</td><td>Letreiro escola + placa rua</td><td>1 folha</td><td>Letreiro fachada</td></tr>
+    </table>
+  </div>
+
+  <h2 class="section-title">Fornecedores em Goiânia</h2>
+  <div class="card">
+    <div class="card-title">Isopor / EPS e materiais para maquete</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Fornecedor</th><th>Especialidade</th><th>Observação</th></tr>
+        <tr><td>Isopor Gyn</td><td>EPS chapas, formas</td><td>Verificar endereço atualizado antes de visitar</td></tr>
+        <tr><td>Isoportec</td><td>EPS e polietileno</td><td>Dois endereços na cidade — confirmar antes da visita</td></tr>
+        <tr><td>D'Isopor</td><td>EPS diversas densidades</td><td>Pode vender por metro</td></tr>
+      </table>
+    </div>
+    <div class="alert alert-warn" style="margin-top:8px; margin-bottom:0;">Ligar antes de visitar para confirmar endereço, disponibilidade e se vendem em varejo para pessoa física.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Papel pluma, EVA e materiais de papelaria</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Tipo de loja</th><th>O que buscar</th></tr>
+        <tr><td>Papelaria especializada</td><td>Papel pluma 3mm e 5mm (A2/A3), acetato, cartolina</td></tr>
+        <tr><td>Casa de materiais artísticos</td><td>Tinta acrílica fosca, cola branca, EVA</td></tr>
+        <tr><td>Loja de construção / madeireira</td><td>MDF 80×60cm 6mm, lixas, parafusos</td></tr>
+        <tr><td>Mercado / supermercado</td><td>Palitos de dente, esponja, fita crepe</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="section-title">Estimativa de Orçamento</h2>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Categoria</th><th>Mínimo (R$)</th><th>Máximo (R$)</th></tr>
+      <tr><td>MDF 80×60cm</td><td>25</td><td>45</td></tr>
+      <tr><td>EPS chapa 30mm alta densidade</td><td>35</td><td>60</td></tr>
+      <tr><td>Papel pluma (5 folhas total)</td><td>40</td><td>80</td></tr>
+      <tr><td>Papelão e cartolina</td><td>10</td><td>20</td></tr>
+      <tr><td>EVA e acetato</td><td>15</td><td>30</td></tr>
+      <tr><td>Tintas acrílicas (5 cores)</td><td>30</td><td>60</td></tr>
+      <tr><td>Colas (branca + EPS)</td><td>20</td><td>40</td></tr>
+      <tr><td>Palitos, arame, esponjas</td><td>10</td><td>20</td></tr>
+      <tr><td>Impressão colorida</td><td>5</td><td>12</td></tr>
+      <tr><td style="font-weight:700;">TOTAL ESTIMADO</td><td style="font-weight:700; color:var(--ok);">R$ 190</td><td style="font-weight:700; color:var(--warn);">R$ 367</td></tr>
+    </table>
+  </div>
+  <p style="font-size:12px; color:var(--fg3); margin-top:8px;">Orçamento baseado em preços de referência para Goiânia (nov. 2026). Pode reduzir substituindo papel pluma por papelão duplex para as casas.</p>
+</div>
+
+<!-- TAB 8: PARA A CRIANÇA -->
+<div id="tab-crianca" class="tab-panel">
+  <h2 class="section-title">Guia para a Criança</h2>
+  <div class="alert alert-ok" style="font-size:14px;"><strong>Olá, pequeno construtor!</strong> Você vai fazer uma maquete da sua escola para mostrar para a turma. Vai ser muito divertido! Siga os passos abaixo com a ajuda de um adulto.</div>
+
+  <div class="child-step">
+    <span class="emoji-big">📸</span>
+    <h3>Passo 1 — Conhecer a escola</h3>
+    <p>Antes de construir, você vai tirar fotos! Peça para um adulto te acompanhar na escola e fotografe: a entrada, a fachada, as casas do lado e a rua. Isso vai ajudar a fazer a maquete igual à realidade.</p>
+  </div>
+
+  <div class="child-step">
+    <span class="emoji-big">📐</span>
+    <h3>Passo 2 — A base</h3>
+    <p>Um adulto vai preparar a base de madeira (MDF) e colar o isopor em cima. Você pode ajudar marcando com régua onde fica a rua e os lotes. Use lápis para fazer as marcas!</p>
+  </div>
+
+  <div class="child-step">
+    <span class="emoji-big">✂️</span>
+    <h3>Passo 3 — Cortar as peças</h3>
+    <p>Com ajuda de adulto, vocês vão cortar o papel pluma em pedaços para fazer as paredes. Use uma régua metálica e estilete — isso é tarefa do adulto. Mas você pode separar as peças já cortadas!</p>
+  </div>
+
+  <div class="child-step">
+    <span class="emoji-big">🏗️</span>
+    <h3>Passo 4 — Montar os prédios</h3>
+    <p>Coloque cola branca nas bordas das peças e junte para formar uma caixinha. Essa é a hora mais emocionante! Você pode segurar as partes enquanto o adulto passa a cola. Faça uma para a escola e uma para cada casinha.</p>
+  </div>
+
+  <div class="child-step">
+    <span class="emoji-big">🎨</span>
+    <h3>Passo 5 — Pintar</h3>
+    <p>Agora vem a parte mais colorida! Use as fotos que você tirou para pintar cada prédio com a cor certa. A escola tem uma cor especial, e cada casa pode ter uma cor diferente. Você pode pintar com pincel!</p>
+  </div>
+
+  <div class="child-step">
+    <span class="emoji-big">🌳</span>
+    <h3>Passo 6 — Árvores e postes</h3>
+    <p>Corte esponjas verdes em bolinhas e cole num palito para fazer árvores. Coloque-as na calçada. Faça também os postes com palitos e cola. Sua rua vai ficar cheia de vida!</p>
+  </div>
+
+  <div class="child-step">
+    <span class="emoji-big">🏫</span>
+    <h3>Passo 7 — O letreiro da escola</h3>
+    <p>Imprima ou escreva "Escola Meta Júnior" num papel pequeno e cole na fachada da escola. Você reconhece o nome da sua escola! Coloque também os números das casas.</p>
+  </div>
+
+  <div class="child-step">
+    <span class="emoji-big">🎤</span>
+    <h3>Passo 8 — Apresentar para a turma</h3>
+    <p>Na hora de apresentar, conte para os amigos o que você vê na sua rua: a escola, as casas, as árvores, a rua. Você pode dizer: <em>"Esta é a nossa escola, a Escola Meta Júnior. Ela fica na Avenida Vasco dos Reis. Aqui estão as casas do lado..."</em></p>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title">Roteiro de apresentação (para ensaiar em casa)</div>
+    <ol style="padding-left:20px; font-size:14px; line-height:2; color:var(--fg2);">
+      <li>Diga o nome do trabalho: <em>"Minha maquete mostra a rua da Escola Meta Júnior."</em></li>
+      <li>Aponte para a escola na maquete: <em>"Aqui é a nossa escola."</em></li>
+      <li>Aponte para a rua: <em>"Essa é a Avenida Vasco dos Reis, onde a escola fica."</em></li>
+      <li>Aponte para as casas: <em>"Ao redor da escola tem casas e prédios."</em></li>
+      <li>Aponte para as árvores: <em>"Coloquei árvores e postes na calçada, igual à vida real."</em></li>
+      <li>Diga o que você aprendeu: <em>"Aprendi que a nossa escola fica em um bairro cheio de casas."</em></li>
+    </ol>
+  </div>
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    if (btn.dataset.tab === 'iso3d') drawIso();
+  });
+});
+
+// Isometric drawing
+function isoXY(mx, my, mz, s, ox, oy) {
+  return {
+    x: (mx - my) * 0.866 * s + ox,
+    y: (mx + my) * 0.5 * s - mz * s + oy
+  };
+}
+
+function drawIsoFace(ctx, pts, fillColor, strokeColor) {
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+  ctx.closePath();
+  ctx.fillStyle = fillColor;
+  ctx.fill();
+  ctx.strokeStyle = strokeColor || 'rgba(0,0,0,0.25)';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+}
+
+function drawBox(ctx, mx, my, mz, w, d, h, s, ox, oy, colors) {
+  // colors: [top, front, right]
+  const p = (x,y,z) => isoXY(x,y,z,s,ox,oy);
+  // 8 corners
+  const a = p(mx,   my,   mz+h); // top-back-left
+  const b = p(mx+w, my,   mz+h); // top-back-right
+  const c = p(mx+w, my+d, mz+h); // top-front-right
+  const dd = p(mx,  my+d, mz+h); // top-front-left
+  const e = p(mx,   my,   mz);   // bot-back-left
+  const f = p(mx+w, my,   mz);   // bot-back-right
+  const g = p(mx+w, my+d, mz);   // bot-front-right
+  const h2= p(mx,   my+d, mz);   // bot-front-left
+  // top
+  drawIsoFace(ctx,[a,b,c,dd], colors[0]||'#BFDBFE');
+  // right face (front-right)
+  drawIsoFace(ctx,[b,c,g,f], colors[2]||'#D1D5DB');
+  // left face (front-left)
+  drawIsoFace(ctx,[a,b,f,e], 'rgba(0,0,0,0.0)');
+  // front face
+  drawIsoFace(ctx,[dd,c,g,h2], colors[1]||'#E2E8F0');
+}
+
+function drawIso() {
+  const canvas = document.getElementById('iso-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const s = 3.6; const ox = 220; const oy = 30;
+  const p = (x,y,z) => isoXY(x,y,z,s,ox,oy);
+
+  // Sky gradient
+  const sky = ctx.createLinearGradient(0,0,0,200);
+  sky.addColorStop(0,'#DBEAFE'); sky.addColorStop(1,'#F0F9FF');
+  ctx.fillStyle = sky; ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // Base (MDF) - draw as thin box
+  const baseColor = '#D97706';
+  drawBox(ctx,0,0,-1,80,60,1,s,ox,oy,['#A85C18','#92400E','#78350F']);
+
+  // Terrain: green areas
+  function fillRect(x1,y1,x2,y2,fill) {
+    const pts = [p(x1,y1,0),p(x2,y1,0),p(x2,y2,0),p(x1,y2,0)];
+    ctx.beginPath(); ctx.moveTo(pts[0].x,pts[0].y);
+    for(let i=1;i<4;i++) ctx.lineTo(pts[i].x,pts[i].y);
+    ctx.closePath(); ctx.fillStyle=fill; ctx.fill();
+  }
+  // North block ground (y=0-23)
+  fillRect(0,0,80,23,'#D1FAE5');
+  // Street (y=23-29)
+  fillRect(0,23,80,29,'#9CA3AF');
+  // Road line
+  ctx.save();
+  const lstart = p(0,26,0.1); const lend = p(80,26,0.1);
+  ctx.setLineDash([8,6]);
+  ctx.strokeStyle='#F9FAFB'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(lstart.x,lstart.y); ctx.lineTo(lend.x,lend.y); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+  // Sidewalk north
+  fillRect(0,22,80,23,'#E5E7EB');
+  // Sidewalk south
+  fillRect(0,29,80,30,'#E5E7EB');
+  // South block ground (y=29-60)
+  fillRect(0,30,80,60,'#D1FAE5');
+
+  // Far south houses (draw first = furthest)
+  const houseColors = ['#FEF3C7','#FEE2E2','#ECFDF5','#EFF6FF','#FDF4FF','#FFF7ED'];
+  const darkColors  = ['#D97706','#DC2626','#059669','#2563EB','#7C3AED','#EA580C'];
+  for(let i=0;i<7;i++) {
+    const mx = 2+i*10; const my = 31; const w=8; const d=7; const h=3;
+    const ci = i%6;
+    drawBox(ctx,mx,my,0,w,d,h,s,ox,oy,[houseColors[ci],houseColors[ci],darkColors[ci]+'66']);
+  }
+
+  // North houses (L3, L2, L1) draw back-to-front
+  for(let i=0;i<3;i++) {
+    const mx = 2+(2-i)*10; const my = 8; const w=8; const d=7; const h=3;
+    const ci = (i+2)%6;
+    drawBox(ctx,mx,my,0,w,d,h,s,ox,oy,[houseColors[ci],houseColors[ci],darkColors[ci]+'66']);
+  }
+  // North houses R1,R2,R3
+  for(let i=0;i<3;i++) {
+    const mx = 42+i*10; const my = 8; const w=8; const d=7; const h=3;
+    const ci = (i+1)%6;
+    drawBox(ctx,mx,my,0,w,d,h,s,ox,oy,[houseColors[ci],houseColors[ci],darkColors[ci]+'66']);
+  }
+
+  // School (prominent, center)
+  drawBox(ctx,32,7,0,16,10,5,s,ox,oy,['#93C5FD','#BFDBFE','#60A5FA']);
+  // School label
+  const sp = p(32+8, 7+5, 5.3);
+  ctx.fillStyle='#1E40AF'; ctx.font='bold 9px Inter,sans-serif';
+  ctx.textAlign='center'; ctx.fillText('ESCOLA META', sp.x, sp.y);
+
+  // Trees (simple circles projected)
+  const treePos = [[5,22],[15,22],[25,22],[55,22],[65,22],[75,22],
+                    [5,30],[15,30],[65,30],[75,30]];
+  treePos.forEach(([tx,ty]) => {
+    const tp = p(tx,ty,0);
+    // trunk
+    ctx.beginPath(); ctx.moveTo(tp.x,tp.y);
+    const tt = p(tx,ty,2.5);
+    ctx.lineTo(tt.x,tt.y);
+    ctx.strokeStyle='#78350F'; ctx.lineWidth=1.5; ctx.stroke();
+    // foliage
+    ctx.beginPath();
+    ctx.arc(tt.x, tt.y-4, 5, 0, Math.PI*2);
+    ctx.fillStyle='#34D399'; ctx.fill();
+    ctx.strokeStyle='#059669'; ctx.lineWidth=0.8; ctx.stroke();
+  });
+
+  // Poles
+  [[10,22],[40,22],[10,30],[70,30]].forEach(([px,py]) => {
+    const bp = p(px,py,0); const tp2 = p(px,py,4);
+    ctx.beginPath(); ctx.moveTo(bp.x,bp.y); ctx.lineTo(tp2.x,tp2.y);
+    ctx.strokeStyle='#6B7280'; ctx.lineWidth=2; ctx.stroke();
+    ctx.beginPath(); ctx.arc(tp2.x,tp2.y,2.5,0,Math.PI*2);
+    ctx.fillStyle='#FCD34D'; ctx.fill();
+  });
+
+  // Compass
+  ctx.font='11px Inter'; ctx.fillStyle='#374151'; ctx.textAlign='left';
+  ctx.fillText('↑ N', 12, 20);
+}
+
+// Draw on first load if 3D tab is visible
+if (document.getElementById('tab-iso3d').classList.contains('active')) drawIso();
+</script>
