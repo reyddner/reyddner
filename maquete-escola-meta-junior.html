@@ -251,6 +251,19 @@ h2.section-title {
   margin-top: 4px;
 }
 
+/* Who badges + checklists */
+.who-crianca { background: var(--ok-lt); color: var(--ok); }
+.who-adulto { background: var(--bg2); color: var(--fg2); }
+.who-juntos { background: var(--accent-lt); color: var(--accent); }
+.check-table input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--ok-mid); cursor: pointer; }
+.check-table tr.done td { color: var(--fg3); }
+.check-table tr.done td:nth-child(2), .check-table tr.done td:nth-child(3) { text-decoration: line-through; }
+
+/* Traffic sign chips */
+.sign-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+.sign { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 92px; text-align: center; font-size: 11px; color: var(--fg2); }
+.sign svg { width: 40px; height: 40px; }
+
 /* Scale ruler visual */
 .ruler { display: flex; align-items: center; gap: 0; margin: 8px 0; }
 .ruler-seg { height: 10px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #fff; font-weight: 700; }
@@ -258,11 +271,12 @@ h2.section-title {
 
 <div class="header">
   <h1>Maquete Escola Meta Júnior — Projeto Executivo</h1>
-  <div class="meta">Av. Vasco dos Reis 401 · Jardim Vila Boa · Goiânia GO · Escala 1:200 · Base 80×60 cm · Entrega 27/11/2026</div>
+  <div class="meta">Av. Vasco dos Reis 401 · Jardim Vila Boa · Goiânia GO · Escala 1:200 · Base 80×60 cm · Bilhete de 09/11/2026 (Prof.ª Ana Terra) · Entrega 27/11/2026</div>
 </div>
 
 <nav class="tabs-nav" role="tablist">
   <button class="tab-btn active" data-tab="projeto" role="tab">Projeto</button>
+  <button class="tab-btn" data-tab="cronograma" role="tab">Cronograma</button>
   <button class="tab-btn" data-tab="levantamento" role="tab">Levantamento</button>
   <button class="tab-btn" data-tab="planta" role="tab">Planta</button>
   <button class="tab-btn" data-tab="iso3d" role="tab">3D</button>
@@ -274,7 +288,27 @@ h2.section-title {
 
 <!-- TAB 1: PROJETO -->
 <div id="tab-projeto" class="tab-panel active">
-  <div class="alert alert-info">Projeto elaborado como maquete física real da rua da escola. Escala 1:200 consistente em todo o modelo.</div>
+  <div class="alert alert-info">Versão caprichada: estrutura técnica (base em MDF, prédios em papel pluma, escala 1:200) feita pelo adulto, e todos os detalhes que dão vida à rua (pessoas, carros, plaquinhas, pintura) feitos pela criança com massinha e papel colorido, os materiais que o bilhete sugere. Assim a maquete fica bonita e o trabalho continua sendo da criança.</div>
+
+  <h2 class="section-title">O que o bilhete pede → como este projeto atende</h2>
+  <div class="card">
+    <p style="font-size:12px; color:var(--fg3); margin-bottom:10px;">Marque cada item quando estiver pronto. As marcações ficam salvas neste navegador.</p>
+    <div class="tbl-wrap">
+      <table class="check-table">
+        <tr><th style="width:32px;"></th><th>Pedido no bilhete</th><th>Onde está no projeto</th></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-escola"></td><td>A escola</td><td>Escola Meta Júnior em papel pluma, com letreiro e portão (aba Peças ①)</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-casas"></td><td>Casas e prédios</td><td>6 casas no lado da escola + 7 no lado oposto; prédio se houver no trecho (Peças ② e ⑧)</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-ruas"></td><td>Calçadas e ruas</td><td>Avenida com faixa central e faixa de pedestre, calçadas dos dois lados (Peças ③)</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-arvores"></td><td>Árvores e postes</td><td>10 árvores de esponja e 4–6 postes de palito (Peças ④)</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-placas"></td><td>Placas de trânsito</td><td>Área escolar, faixa de pedestres, velocidade, proibido estacionar (Peças ⑥)</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-detalhes"></td><td>Outros detalhes do espaço</td><td>Alunos, pais, carros, cachorro, lixeira e flores em massinha (Peças ⑦)</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-reciclaveis"></td><td>Recicláveis, caixas, papelão, massinha, papel colorido</td><td>Caixinhas recicladas, papelão nas calçadas, massinha e papel colorido nos detalhes (aba Materiais)</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-participa"></td><td>A criança participa, identificando os elementos</td><td>Tarefas da criança em cada dia do Cronograma + plaquinhas de identificação escritas por ela</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-criatividade"></td><td>Criatividade e organização</td><td>Cena com vida (saída da escola), cores reais das fachadas, base limpa e etiquetada</td></tr>
+        <tr><td><input type="checkbox" class="persist" id="ck-apresenta"></td><td>Apresentar para a turma</td><td>Roteiro e ensaios na aba Para a Criança</td></tr>
+      </table>
+    </div>
+  </div>
 
   <h2 class="section-title">Dados da Atividade</h2>
   <div class="card">
@@ -285,6 +319,8 @@ h2.section-title {
       <div class="info-item"><div class="info-label">Entrega</div><div class="info-value">27/11/2026</div></div>
       <div class="info-item"><div class="info-label">Pontuação</div><div class="info-value">2,0 pontos</div></div>
       <div class="info-item"><div class="info-label">Tema</div><div class="info-value">Rua da escola</div></div>
+      <div class="info-item"><div class="info-label">Compõe a nota</div><div class="info-value">Produção, último bimestre</div></div>
+      <div class="info-item"><div class="info-label">Bilhete</div><div class="info-value">09/11/2026</div></div>
     </div>
     <div class="card-subtitle">Critérios de Avaliação</div>
     <div style="display:flex; flex-wrap:wrap; gap:8px;">
@@ -359,6 +395,38 @@ h2.section-title {
   </div>
 </div>
 
+<!-- TAB: CRONOGRAMA -->
+<div id="tab-cronograma" class="tab-panel">
+  <h2 class="section-title">Cronograma até a entrega — 12 dias</h2>
+  <div class="alert alert-info">Sessões curtas nos dias de semana (até 1 h, para a criança não cansar) e o trabalho pesado no feriado de <strong>20/11 (Consciência Negra)</strong> e no fim de semana. A cola e a tinta precisam secar entre as etapas, por isso a obra é dividida em dias. 25 e 26/11 ficam de folga para imprevistos e ensaio.</div>
+
+  <div class="legend" style="margin-bottom:12px;">
+    <span class="badge who-crianca">Criança</span>
+    <span class="badge who-adulto">Adulto</span>
+    <span class="badge who-juntos">Juntos</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="check-table">
+      <tr><th style="width:32px;"></th><th>Data</th><th>Tarefa</th><th>Quem</th><th>Tempo</th></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-15"></td><td><strong>Dom 15/11</strong></td><td>Ler o projeto, conversar com a criança sobre a maquete, conferir a lista de compras</td><td><span class="badge who-juntos">Juntos</span></td><td>30 min</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-16"></td><td><strong>Seg 16/11</strong></td><td>Na saída da escola: fotografar a fachada, as casas vizinhas, o lado oposto, as placas e os postes (checklist da aba Levantamento). A criança aponta e conta o que vê</td><td><span class="badge who-juntos">Juntos</span></td><td>20 min</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-17"></td><td><strong>Ter 17/11</strong></td><td>Compras. Pedir na madeireira o MDF já cortado em 80×60 cm. Separar caixinhas recicladas em casa</td><td><span class="badge who-adulto">Adulto</span></td><td>1–2 h</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-18"></td><td><strong>Qua 18/11</strong></td><td>Colar o EPS no MDF (adulto). A criança marca a rua e as calçadas a lápis com régua</td><td><span class="badge who-juntos">Juntos</span></td><td>1 h + secar</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-19"></td><td><strong>Qui 19/11</strong></td><td>Pintar rua (cinza escuro), calçadas (cinza claro) e jardins (verde). A criança pinta com pincel largo</td><td><span class="badge who-crianca">Criança</span></td><td>1 h + secar</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-20"></td><td><strong>Sex 20/11</strong> <span class="badge badge-ok">feriado</span></td><td>Adulto corta todas as peças de papel pluma. A criança separa as peças por prédio e segura enquanto o adulto cola as caixinhas</td><td><span class="badge who-juntos">Juntos</span></td><td>3 h</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-21"></td><td><strong>Sáb 21/11</strong></td><td>Pintar as fachadas com as cores das fotos. Janelas e telhados de papel colorido recortado pela criança</td><td><span class="badge who-crianca">Criança</span></td><td>2–3 h</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-22"></td><td><strong>Dom 22/11</strong></td><td>Dia da massinha: alunos, pais, carros, cachorro, flores, lixeira. Árvores de esponja e postes de palito</td><td><span class="badge who-crianca">Criança</span></td><td>2 h</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-23"></td><td><strong>Seg 23/11</strong></td><td>Colar escola e casas na base, nas posições da Planta</td><td><span class="badge who-juntos">Juntos</span></td><td>1 h</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-24"></td><td><strong>Ter 24/11</strong></td><td>Letreiro da escola, placas de trânsito, árvores, postes e bonequinhos no lugar. A criança escreve as plaquinhas de identificação</td><td><span class="badge who-crianca">Criança</span></td><td>1 h</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-25"></td><td><strong>Qua 25/11</strong></td><td>Folga para retoques. Primeiro ensaio da apresentação com a maquete pronta</td><td><span class="badge who-juntos">Juntos</span></td><td>30 min</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-26"></td><td><strong>Qui 26/11</strong></td><td>Ensaio final. Etiqueta na base. Embalar para o transporte</td><td><span class="badge who-juntos">Juntos</span></td><td>30 min</td></tr>
+      <tr><td><input type="checkbox" class="persist" id="cr-27"></td><td><strong>Sex 27/11</strong></td><td><strong>Entrega e apresentação para a turma</strong></td><td><span class="badge who-crianca">Criança</span></td><td>—</td></tr>
+    </table>
+  </div>
+  <p style="font-size:12px; color:var(--fg3); margin-top:8px;">Se as fotos de 16/11 mostrarem algo diferente do previsto (prédio, esquina, outra cor), ajuste as peças antes de 20/11, dia em que tudo é cortado.</p>
+</div>
+
 <!-- TAB 2: LEVANTAMENTO -->
 <div id="tab-levantamento" class="tab-panel">
   <div class="alert alert-warn"><strong>Levantamento parcial.</strong> Dados confirmados via fontes digitais estão marcados ✔. Itens com ⚠ precisam de verificação fotográfica presencial antes da construção.</div>
@@ -407,6 +475,8 @@ h2.section-title {
     <div class="survey-row"><div class="survey-label">📸</div><div class="survey-value">Fotografar as 3–4 casas/edifícios à direita da escola</div></div>
     <div class="survey-row"><div class="survey-label">📸</div><div class="survey-value">Fotografar o lado oposto da avenida (bloco sul)</div></div>
     <div class="survey-row"><div class="survey-label">📸</div><div class="survey-value">Fotografar o passeio e a rua (piso, árvores, postes)</div></div>
+    <div class="survey-row"><div class="survey-label">🚸</div><div class="survey-value">Fotografar todas as placas de trânsito do trecho (área escolar, velocidade, proibido estacionar, faixa). Na maquete entram só as que existem de verdade</div></div>
+    <div class="survey-row"><div class="survey-label">🏢</div><div class="survey-value">Verificar se há prédio, comércio ou esquina no trecho; anotar o número de andares</div></div>
     <div class="survey-row"><div class="survey-label">📐</div><div class="survey-value">Estimar a largura da avenida (quantas faixas, largura visual)</div></div>
     <div class="survey-row"><div class="survey-label">📋</div><div class="survey-value">Anotar cores dominantes de cada fachada</div></div>
   </div>
@@ -530,6 +600,28 @@ h2.section-title {
       <line x1="380" y1="140" x2="380" y2="150" stroke="#6B7280" stroke-width="2"/>
       <circle cx="380" cy="140" r="2" fill="#FCD34D"/>
 
+      <!-- Placas de trânsito -->
+      <polygon points="238,138 242,142 238,146 234,142" fill="#FACC15" stroke="#111" stroke-width=".8"/>
+      <polygon points="302,138 306,142 302,146 298,142" fill="#FACC15" stroke="#111" stroke-width=".8"/>
+      <circle cx="200" cy="189" r="3.5" fill="#fff" stroke="#DC2626" stroke-width="1.5"/>
+      <circle cx="340" cy="189" r="3.5" fill="#fff" stroke="#DC2626" stroke-width="1.5"/>
+
+      <!-- Carros e van -->
+      <rect x="115" y="152" width="11" height="5" rx="1.5" fill="#EF4444" stroke="#7F1D1D" stroke-width=".6"/>
+      <rect x="400" y="153" width="11" height="5" rx="1.5" fill="#3B82F6" stroke="#1E3A8A" stroke-width=".6"/>
+      <rect x="180" y="174" width="11" height="5" rx="1.5" fill="#F8FAFC" stroke="#475569" stroke-width=".6"/>
+      <rect x="455" y="175" width="11" height="5" rx="1.5" fill="#22C55E" stroke="#14532D" stroke-width=".6"/>
+      <rect x="312" y="150" width="13" height="5.5" rx="1.5" fill="#fff" stroke="#475569" stroke-width=".6"/>
+      <rect x="312" y="152.2" width="13" height="1.2" fill="#FACC15"/>
+
+      <!-- Pessoas no portão e na faixa -->
+      <circle cx="283" cy="133" r="1.6" fill="#1D4ED8"/>
+      <circle cx="288" cy="134" r="1.6" fill="#DC2626"/>
+      <circle cx="293" cy="133" r="1.6" fill="#1D4ED8"/>
+      <circle cx="297" cy="135" r="1.8" fill="#7C3AED"/>
+      <circle cx="281" cy="160" r="1.6" fill="#1D4ED8"/>
+      <circle cx="281" cy="171" r="1.8" fill="#7C3AED"/>
+
       <!-- Cotas -->
       <!-- Largura base -->
       <line x1="50" y1="378" x2="530" y2="378" stroke="#6B7280" stroke-width="1"/>
@@ -564,7 +656,12 @@ h2.section-title {
     <div class="legend-item"><div class="legend-color" style="background:#E5E7EB;"></div>Calçada</div>
     <div class="legend-item"><div class="legend-color" style="background:#86EFAC;"></div>Árvore</div>
     <div class="legend-item"><div class="legend-color" style="background:#FCD34D;"></div>Poste</div>
+    <div class="legend-item"><div class="legend-color" style="background:#FACC15; transform:rotate(45deg) scale(.8);"></div>Placa de advertência</div>
+    <div class="legend-item"><div class="legend-color" style="background:#fff; border:2px solid #DC2626; border-radius:50%;"></div>Placa de regulamentação</div>
+    <div class="legend-item"><div class="legend-color" style="background:#EF4444;"></div>Carros e van escolar</div>
+    <div class="legend-item"><div class="legend-color" style="background:#1D4ED8; border-radius:50%;"></div>Pessoas (massinha)</div>
   </div>
+  <p style="font-size:12px; color:var(--fg3); margin-top:8px;">Posição das placas ilustrativa: na maquete entram só as placas que existem na rua, no lugar onde aparecem nas fotos.</p>
 </div>
 
 <!-- TAB 4: 3D ISOMÉTRICO -->
@@ -583,6 +680,9 @@ h2.section-title {
     <div class="legend-item"><div class="legend-color" style="background:#9CA3AF;"></div>Rua</div>
     <div class="legend-item"><div class="legend-color" style="background:#D1FAE5;"></div>Calçada</div>
     <div class="legend-item"><div class="legend-color" style="background:#34D399;"></div>Árvores</div>
+    <div class="legend-item"><div class="legend-color" style="background:#FACC15;"></div>Placas</div>
+    <div class="legend-item"><div class="legend-color" style="background:#EF4444;"></div>Carros e van</div>
+    <div class="legend-item"><div class="legend-color" style="background:#1D4ED8; border-radius:50%;"></div>Pessoas</div>
   </div>
 </div>
 
@@ -612,7 +712,7 @@ h2.section-title {
       <div class="piece-box"><div class="dim">60 × 30 mm</div><div class="lbl">Lateral dir. (×6)</div></div>
       <div class="piece-box"><div class="dim">60 × 60 mm</div><div class="lbl">Cobertura (×6)</div></div>
     </div>
-    <p style="font-size:12px; color:var(--fg3); margin-top:10px;">Casa simples, lote de 5cm de frente. Ajuste a cor de cada casa conforme verificação in loco.</p>
+    <p style="font-size:12px; color:var(--fg3); margin-top:10px;">Casa simples, lote de 5cm de frente. Ajuste a cor de cada casa conforme verificação in loco. Opção reciclável: uma caixinha de remédio ou de creme dental com ~50×30×60 mm serve como casa pronta, é só encapar com papel colorido.</p>
   </div>
 
   <div class="card">
@@ -656,6 +756,68 @@ h2.section-title {
         <tr><td><strong>Total 3mm</strong></td><td>Papel pluma A3 (42×30cm = 1260cm²)</td><td>~200 cm² → <strong>1 folha A3</strong></td></tr>
       </table>
     </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⑥ Placas de trânsito — desenhadas pela criança</div>
+    <p style="font-size:13px; color:var(--fg2);">Na escala 1:200 uma placa real (≈50 cm) teria 2,5 mm, pequena demais para ler. Por isso as placas são feitas em <strong>escala de leitura</strong>: disco ou losango de 10–12 mm sobre haste de palito de 22 mm. É uma convenção comum em maquetes didáticas. A criança desenha e pinta cada placa em papel cartão, recorta e cola no palito. Use só as placas que aparecerem nas fotos de 16/11.</p>
+    <div class="sign-row">
+      <div class="sign">
+        <svg viewBox="0 0 40 40"><polygon points="20,2 38,20 20,38 2,20" fill="#FACC15" stroke="#111" stroke-width="2"/><circle cx="15" cy="14" r="2.5" fill="#111"/><path d="M15 17 L15 25 M15 19 L11 23 M15 19 L19 22 M15 25 L12 30 M15 25 L18 30" stroke="#111" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="25" cy="16" r="2" fill="#111"/><path d="M25 18.5 L25 25 M25 20 L22 23 M25 20 L28 23 M25 25 L23 29 M25 25 L27 29" stroke="#111" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        Área escolar<br>(A-33a)
+      </div>
+      <div class="sign">
+        <svg viewBox="0 0 40 40"><polygon points="20,2 38,20 20,38 2,20" fill="#FACC15" stroke="#111" stroke-width="2"/><circle cx="20" cy="11" r="2.5" fill="#111"/><path d="M20 14 L20 21 M20 16 L16 20 M20 16 L24 19 M20 21 L17 26 M20 21 L23 26" stroke="#111" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M11 29 H29" stroke="#111" stroke-width="2" stroke-dasharray="2.5,2"/></svg>
+        Passagem de pedestres<br>(A-32b)
+      </div>
+      <div class="sign">
+        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#fff" stroke="#DC2626" stroke-width="5"/><text x="20" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#111" font-family="Inter,sans-serif">40</text><text x="20" y="31" text-anchor="middle" font-size="5" fill="#111" font-family="Inter,sans-serif">km/h</text></svg>
+        Velocidade máxima<br>(R-19)
+      </div>
+      <div class="sign">
+        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#fff" stroke="#DC2626" stroke-width="5"/><text x="20" y="26" text-anchor="middle" font-size="16" font-weight="700" fill="#111" font-family="Inter,sans-serif">E</text><line x1="9" y1="9" x2="31" y2="31" stroke="#DC2626" stroke-width="4"/></svg>
+        Proibido estacionar<br>(R-6a)
+      </div>
+      <div class="sign">
+        <svg viewBox="0 0 40 40"><polygon points="13,2 27,2 38,13 38,27 27,38 13,38 2,27 2,13" fill="#DC2626" stroke="#fff" stroke-width="1.5"/><text x="20" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="Inter,sans-serif">PARE</text></svg>
+        Pare (R-1)<br>só se houver esquina
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--fg3); margin-top:10px;">O número da placa de velocidade é ilustrativo: copie o valor da placa real.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⑦ Vida na rua — massinha, feita pela criança</div>
+    <p style="font-size:13px; color:var(--fg2); margin-bottom:10px;">É aqui que a maquete deixa de ser só uma planta e vira a <strong>saída da escola</strong>. Tamanhos já em escala 1:200; não precisa ser exato, o importante é ficar proporcional às casas.</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Elemento</th><th>Tamanho na maquete</th><th>Qtd</th><th>Como fazer</th></tr>
+        <tr><td>Alunos de uniforme</td><td>~8 mm de altura</td><td>6–8</td><td>Bolinha (cabeça) + rolinho (corpo) nas cores do uniforme da escola</td></tr>
+        <tr><td>Pais e professores</td><td>~9 mm</td><td>3–4</td><td>Igual aos alunos, um pouco maiores</td></tr>
+        <tr><td>Carros</td><td>21 × 9 × 7 mm</td><td>3–5</td><td>Bloquinho de massinha + 4 bolinhas pretas de roda</td></tr>
+        <tr><td>Van escolar</td><td>25 × 10 × 10 mm</td><td>1</td><td>Branca com faixa amarela e a palavra ESCOLAR escrita em papel</td></tr>
+        <tr><td>Cachorro</td><td>~5 mm</td><td>1</td><td>Três bolinhas: corpo, cabeça e rabo</td></tr>
+        <tr><td>Lixeiras</td><td>~4 mm</td><td>2</td><td>Rolinho com a ponta achatada, na calçada</td></tr>
+        <tr><td>Flores</td><td>bolinhas de 2 mm</td><td>à vontade</td><td>Pontinhos coloridos nos jardins</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px; color:var(--fg3); margin-top:8px;">Use massinha de modelar que endurece ao ar (biscuit ou massa de secagem ao ar) para os bonequinhos não deformarem no transporte. Cole com uma gota de cola branca.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⑧ Prédio — só se existir no trecho</div>
+    <p style="font-size:13px; color:var(--fg2); margin-bottom:10px;">O bilhete cita prédios. Se as fotos mostrarem um, cada andar vale <strong>15 mm</strong> (3 m reais).</p>
+    <div class="piece-diagram">
+      <div class="piece-box"><div class="dim">50 × 60 mm</div><div class="lbl">Fachada e fundo (×2)<br>4 andares</div></div>
+      <div class="piece-box"><div class="dim">50 × 60 mm</div><div class="lbl">Laterais (×2)</div></div>
+      <div class="piece-box"><div class="dim">50 × 50 mm</div><div class="lbl">Cobertura</div></div>
+    </div>
+    <p style="font-size:12px; color:var(--fg3); margin-top:10px;">Opção reciclável: caixa de leite cortada na altura certa (4 andares = 60 mm), encapada com papel e com janelinhas de papel colorido. Se não houver prédio no trecho, não invente: a professora pediu a rua real.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⑨ Plaquinhas de identificação — escritas pela criança</div>
+    <p style="font-size:13px; color:var(--fg2);">Bandeirinhas de papel (20 × 10 mm) em palito, espetadas ao lado de cada elemento. A criança escreve com a própria letra: <strong>ESCOLA · AVENIDA · CALÇADA · CASA · ÁRVORE · POSTE · PLACA · FAIXA DE PEDESTRE</strong>. Elas mostram que a criança sabe identificar cada parte da rua, que é um dos pedidos do bilhete, e servem de guia na apresentação.</p>
   </div>
 </div>
 
@@ -755,7 +917,8 @@ h2.section-title {
         <li>Preparar árvores: cortar palito para tronco (25mm), colar esponja verde cortada em bola (Ø20mm)</li>
         <li>Posicionar árvores uniformemente nas calçadas a cada ~5cm</li>
         <li>Cobrir os jardins com areia colorida verde ou flock (esponja triturada) com cola branca diluída</li>
-        <li>Adicionar placa de rua (papel impresso sobre palito)</li>
+        <li>Adicionar placa com o nome da rua (papel impresso sobre palito)</li>
+        <li>Espetar as placas de trânsito desenhadas pela criança (Peças ⑥): área escolar e faixa de pedestres perto da escola, velocidade e proibido estacionar onde aparecem nas fotos. Furar o isopor com um palito antes e colocar uma gota de cola</li>
       </ul>
     </div>
   </div>
@@ -763,11 +926,26 @@ h2.section-title {
   <div class="step">
     <div class="step-num">8</div>
     <div class="step-body">
+      <h4>Vida na rua e identificação (1 h) — etapa da criança</h4>
+      <ul>
+        <li>Posicionar alunos e pais em frente ao portão da escola e na faixa de pedestres</li>
+        <li>Colocar os carros nas faixas da avenida (andando, não estacionados em frente à escola) e a van escolar parada perto do portão</li>
+        <li>Cachorro e lixeiras nas calçadas; flores nos jardins</li>
+        <li>Espetar as plaquinhas de identificação escritas pela criança (Peças ⑨)</li>
+        <li>Fixar tudo com uma gota de cola branca: os bonecos não podem cair no caminho até a escola</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">9</div>
+    <div class="step-body">
       <h4>Acabamento final e identificação (30 min)</h4>
       <ul>
         <li>Revisar toda a maquete: verificar bordas limpas, sem resíduo de cola</li>
         <li>Tocar com tinta fosca nas regiões com marcas ou sujeira</li>
-        <li>Colar etiqueta de identificação discreta na borda inferior do MDF: "Escola Meta Júnior — Maquete — 2º Ano 2026"</li>
+        <li>Colar etiqueta na borda inferior do MDF com o nome da criança: "A rua da Escola Meta Júnior — [nome] — 2º Ano — Prof.ª Ana Terra — 2026"</li>
+        <li>Colar a rosa dos ventos (seta N) e a escala 1:200 num canto da base</li>
         <li>Proteger para transporte: embalar com plástico bolha sobre uma caixa rígida</li>
       </ul>
     </div>
@@ -795,6 +973,10 @@ h2.section-title {
       <tr><td>13</td><td>Arame galvanizado</td><td>Ø0,5–0,8mm, rolo</td><td>1 rolo</td><td>Postes altos, semáforo</td></tr>
       <tr><td>14</td><td>Esponja de lavar louça</td><td>Verde (para copas)</td><td>4 unid.</td><td>Árvores</td></tr>
       <tr><td>15</td><td>Impressão colorida</td><td>Letreiro escola + placa rua</td><td>1 folha</td><td>Letreiro fachada</td></tr>
+      <tr><td>16</td><td>Massinha que seca ao ar</td><td>Biscuit ou massa de secagem ao ar, kit 6 cores</td><td>1 kit</td><td>Pessoas, carros, cachorro, flores</td></tr>
+      <tr><td>17</td><td>Papel colorido</td><td>Bloco A4 de cores variadas</td><td>1 bloco</td><td>Janelas, telhados, toldos, faixas</td></tr>
+      <tr><td>18</td><td>Papel cartão branco</td><td>A4</td><td>1 folha</td><td>Placas de trânsito e plaquinhas de identificação</td></tr>
+      <tr><td>19</td><td>Caixinhas recicladas</td><td>Remédio, creme dental, leite (já tem em casa)</td><td>à vontade</td><td>Casas e prédio (opção reciclável)</td></tr>
     </table>
   </div>
 
@@ -838,10 +1020,13 @@ h2.section-title {
       <tr><td>Colas (branca + EPS)</td><td>20</td><td>40</td></tr>
       <tr><td>Palitos, arame, esponjas</td><td>10</td><td>20</td></tr>
       <tr><td>Impressão colorida</td><td>5</td><td>12</td></tr>
-      <tr><td style="font-weight:700;">TOTAL ESTIMADO</td><td style="font-weight:700; color:var(--ok);">R$ 190</td><td style="font-weight:700; color:var(--warn);">R$ 367</td></tr>
+      <tr><td>Massinha que seca ao ar (kit)</td><td>10</td><td>20</td></tr>
+      <tr><td>Papel colorido + papel cartão</td><td>5</td><td>12</td></tr>
+      <tr><td>Caixinhas recicladas</td><td>0</td><td>0</td></tr>
+      <tr><td style="font-weight:700;">TOTAL ESTIMADO</td><td style="font-weight:700; color:var(--ok);">R$ 205</td><td style="font-weight:700; color:var(--warn);">R$ 399</td></tr>
     </table>
   </div>
-  <p style="font-size:12px; color:var(--fg3); margin-top:8px;">Orçamento baseado em preços de referência para Goiânia (nov. 2026). Pode reduzir substituindo papel pluma por papelão duplex para as casas.</p>
+  <p style="font-size:12px; color:var(--fg3); margin-top:8px;">Faixas de preço estimadas para Goiânia, não cotadas em loja. Para baixar o custo: casas feitas com caixinhas recicladas em vez de papel pluma (economia de R$ 30–50) e EPS comum em vez de alta densidade.</p>
 </div>
 
 <!-- TAB 8: PARA A CRIANÇA -->
@@ -886,27 +1071,48 @@ h2.section-title {
   </div>
 
   <div class="child-step">
+    <span class="emoji-big">🚸</span>
+    <h3>Passo 7 — Placas de trânsito</h3>
+    <p>Lembra das placas que você fotografou na frente da escola? Desenhe cada uma num papel firme, pinte com as cores certas (amarelo, vermelho, branco), recorte e cole num palito. A placa amarela com crianças avisa os motoristas que ali tem escola!</p>
+  </div>
+
+  <div class="child-step">
+    <span class="emoji-big">🧒</span>
+    <h3>Passo 8 — Gente na rua</h3>
+    <p>Com massinha, faça os alunos com o uniforme da escola, os pais, os carros, a van escolar e até um cachorrinho. Coloque as crianças na porta da escola e atravessando na faixa. Agora a sua rua tem vida!</p>
+  </div>
+
+  <div class="child-step">
     <span class="emoji-big">🏫</span>
-    <h3>Passo 7 — O letreiro da escola</h3>
-    <p>Imprima ou escreva "Escola Meta Júnior" num papel pequeno e cole na fachada da escola. Você reconhece o nome da sua escola! Coloque também os números das casas.</p>
+    <h3>Passo 9 — Letreiro e plaquinhas</h3>
+    <p>Escreva "Escola Meta Júnior" num papel pequeno e cole na fachada. Depois escreva com a sua letra as plaquinhas ESCOLA, AVENIDA, CALÇADA, CASA, ÁRVORE, POSTE e PLACA, cole em palitos e espete cada uma ao lado do que ela mostra.</p>
   </div>
 
   <div class="child-step">
     <span class="emoji-big">🎤</span>
-    <h3>Passo 8 — Apresentar para a turma</h3>
-    <p>Na hora de apresentar, conte para os amigos o que você vê na sua rua: a escola, as casas, as árvores, a rua. Você pode dizer: <em>"Esta é a nossa escola, a Escola Meta Júnior. Ela fica na Avenida Vasco dos Reis. Aqui estão as casas do lado..."</em></p>
+    <h3>Passo 10 — Apresentar para a turma</h3>
+    <p>Na hora de apresentar, use as plaquinhas como guia: vá apontando uma por uma e contando o que é. Ensaie em casa duas vezes, em 25 e 26/11.</p>
   </div>
 
   <div class="card" style="margin-top:20px;">
-    <div class="card-title">Roteiro de apresentação (para ensaiar em casa)</div>
+    <div class="card-title">Roteiro de apresentação (para ensaiar em casa, cerca de 1 minuto)</div>
     <ol style="padding-left:20px; font-size:14px; line-height:2; color:var(--fg2);">
       <li>Diga o nome do trabalho: <em>"Minha maquete mostra a rua da Escola Meta Júnior."</em></li>
-      <li>Aponte para a escola na maquete: <em>"Aqui é a nossa escola."</em></li>
-      <li>Aponte para a rua: <em>"Essa é a Avenida Vasco dos Reis, onde a escola fica."</em></li>
-      <li>Aponte para as casas: <em>"Ao redor da escola tem casas e prédios."</em></li>
-      <li>Aponte para as árvores: <em>"Coloquei árvores e postes na calçada, igual à vida real."</em></li>
-      <li>Diga o que você aprendeu: <em>"Aprendi que a nossa escola fica em um bairro cheio de casas."</em></li>
+      <li>Aponte para a escola: <em>"Aqui é a nossa escola. A cor e o portão são iguais aos de verdade."</em></li>
+      <li>Aponte para a rua: <em>"Essa é a Avenida Vasco dos Reis. Os carros andam aqui, e as pessoas andam na calçada."</em></li>
+      <li>Aponte para a faixa e as placas: <em>"Essa placa amarela avisa que tem escola. A gente atravessa na faixa de pedestre."</em></li>
+      <li>Aponte para as casas: <em>"Do lado da escola tem casas. Eu pintei cada uma com a cor que vi nas fotos."</em></li>
+      <li>Aponte para as árvores e postes: <em>"As árvores dão sombra e os postes iluminam a rua de noite."</em></li>
+      <li>Conte o que você fez: <em>"Eu fiz os bonequinhos, as placas e pintei a rua."</em></li>
+      <li>Termine: <em>"Aprendi que a rua da escola tem muitas coisas que ajudam a gente a chegar com segurança."</em></li>
     </ol>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Perguntas que a turma pode fazer</div>
+    <div class="survey-row"><div class="survey-label">"Quem fez?"</div><div class="survey-value">"Eu fiz com a ajuda da minha família. Eu pintei, fiz os bonequinhos e as placas."</div></div>
+    <div class="survey-row"><div class="survey-label">"Do que é feito?"</div><div class="survey-value">"Isopor, papel, caixinhas, massinha e tinta."</div></div>
+    <div class="survey-row"><div class="survey-label">"Por que tem placa?"</div><div class="survey-value">"Para os carros irem devagar perto da escola."</div></div>
   </div>
 </div>
 
@@ -1062,6 +1268,36 @@ function drawIso() {
     ctx.fillStyle='#FCD34D'; ctx.fill();
   });
 
+  // Cars and school van on the avenue
+  [[12,23.6,'#EF4444','#B91C1C'],[58,23.6,'#3B82F6','#1D4ED8'],[22,26.6,'#F8FAFC','#94A3B8'],[68,26.6,'#22C55E','#15803D']]
+    .forEach(([cx,cy,c1,c2]) => drawBox(ctx,cx,cy,0,2.1,0.9,0.7,s,ox,oy,[c1,c1,c2]));
+  drawBox(ctx,44,23.4,0,2.5,1,1,s,ox,oy,['#FFFFFF','#FACC15','#E5E7EB']);
+
+  // Traffic signs: [x, y, type]
+  [[31,22.3,'warn'],[46,22.3,'warn'],[25,29.7,'reg'],[55,29.7,'reg']].forEach(([sx,sy,t]) => {
+    const b = p(sx,sy,0), top = p(sx,sy,3);
+    ctx.beginPath(); ctx.moveTo(b.x,b.y); ctx.lineTo(top.x,top.y);
+    ctx.strokeStyle='#4B5563'; ctx.lineWidth=1.2; ctx.stroke();
+    ctx.beginPath();
+    if (t === 'warn') {
+      ctx.moveTo(top.x,top.y-4); ctx.lineTo(top.x+4,top.y); ctx.lineTo(top.x,top.y+4); ctx.lineTo(top.x-4,top.y); ctx.closePath();
+      ctx.fillStyle='#FACC15'; ctx.fill(); ctx.strokeStyle='#111'; ctx.lineWidth=0.8; ctx.stroke();
+    } else {
+      ctx.arc(top.x,top.y,3.5,0,Math.PI*2);
+      ctx.fillStyle='#fff'; ctx.fill(); ctx.strokeStyle='#DC2626'; ctx.lineWidth=1.5; ctx.stroke();
+    }
+  });
+
+  // People at the school gate and on the crosswalk
+  [[38.5,18,'#1D4ED8'],[39.6,18.4,'#DC2626'],[40.8,18,'#1D4ED8'],[42,18.6,'#7C3AED'],[40,24.5,'#1D4ED8'],[40,27.5,'#7C3AED']]
+    .forEach(([px,py,c]) => {
+      const b = p(px,py,0), hd = p(px,py,1.6);
+      ctx.beginPath(); ctx.moveTo(b.x,b.y); ctx.lineTo(hd.x,hd.y+1.5);
+      ctx.strokeStyle=c; ctx.lineWidth=2; ctx.stroke();
+      ctx.beginPath(); ctx.arc(hd.x,hd.y,1.4,0,Math.PI*2);
+      ctx.fillStyle='#F5D0A9'; ctx.fill();
+    });
+
   // Compass
   ctx.font='11px Inter'; ctx.fillStyle='#374151'; ctx.textAlign='left';
   ctx.fillText('↑ N', 12, 20);
@@ -1069,4 +1305,16 @@ function drawIso() {
 
 // Draw on first load if 3D tab is visible
 if (document.getElementById('tab-iso3d').classList.contains('active')) drawIso();
+
+// Checklists remembered per browser
+document.querySelectorAll('input.persist').forEach(cb => {
+  const key = 'maquete-' + cb.id;
+  const row = cb.closest('tr');
+  try { cb.checked = localStorage.getItem(key) === '1'; } catch (e) {}
+  if (row) row.classList.toggle('done', cb.checked);
+  cb.addEventListener('change', () => {
+    if (row) row.classList.toggle('done', cb.checked);
+    try { localStorage.setItem(key, cb.checked ? '1' : '0'); } catch (e) {}
+  });
+});
 </script>
