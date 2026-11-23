@@ -9,11 +9,10 @@ Civil engineer and Full Stack developer at [Mont Cruz Engenharia](https://www.mo
 to handle the engineering work I do every day: foundations, steel structures,
 construction cost estimating and technical reports.
 
-### Open projects
+### Open project
 
 | Project | What it does |
 |---|---|
-| [**STARKX**](https://github.com/reyddner/starkx) · [open in the browser](https://starkx-publico.vercel.app) | Foundation design in the browser: pile capacity from SPT (Aoki-Velloso, Décourt-Quaresma), pile caps, spread footings, caissons and mat foundations, with drawings and calculation reports. |
 | [**lean-agents-md**](https://github.com/reyddner/lean-agents-md) | An instructions file (AGENTS.md / CLAUDE.md) that makes Codex and Claude Code spend fewer tokens. |
 
 ### Private projects
@@ -21,6 +20,7 @@ construction cost estimating and technical reports.
 Most of what I build lives in private repositories. A selection:
 
 **Engineering and construction**
+- **STARKX**: foundation design in the browser: pile capacity from SPT (Aoki-Velloso, Décourt-Quaresma), pile caps, spread footings, caissons and mat foundations, with drawings and calculation reports
 - **Cremona**: deterministic engine for steel warehouses: structure, connections, foundations, solar PV, electrical and drainage, with DXF/PDF drawings, specifications and cost estimate
 - **OrçaX**: construction estimating and management SaaS: hierarchical estimates, SINAPI/SICRO price bases, daily site logs, progress measurements, Gantt and S-curve, CUB estimates for 19 Brazilian states
 - **Portal de Obras**: public works dashboard for city engineering departments (contracts, amendments, measurements, alerts), read straight from the network folders
